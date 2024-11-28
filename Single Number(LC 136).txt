@@ -1,0 +1,17 @@
+Brute Solution: search for the single element by iterating through array using two pointer, will take TC: O(N^2) and SC: O(1)
+
+Some Optimization--> Use HashSet: Take one Hashset as it was given that their are one duplicate of each number except for one in array.
+Start storing numbers in se, if duplicate found, remove original number also. 
+This way when you iterate through whole array, you will be left with single number in set which will be our result.
+TC: O(N)  SC: O(N)
+
+Optimised: Bitwise XOR approach: TC: O(N),  SC: O(1)
+class Solution {
+    public int singleNumber(int[] nums) {
+        int ans = 0;
+        for(int i=0; i<nums.length; i++) {
+            ans ^= nums[i];
+        }
+        return ans;
+    }
+}
