@@ -1,0 +1,35 @@
+HashSet Soln TC: O(N),  SC: O(N)
+
+class Solution {
+    public int missingNumber(int[] nums) {
+        int len = nums.length;
+        Set<Integer> set = new HashSet<> ();
+        for(int i=0; i<len; i++) {
+            set.add(nums[i]);
+        }
+        for(int i=0; i<=len; i++) {
+            if(!set.contains(i)) {
+                return i;
+            }
+        }
+        return 0;
+    }
+}
+
+
+Optimized:
+TC:  O(N),   SC: O(1)
+
+class Solution {
+    public int missingNumber(int[] nums) {
+        int wholeSum = 0;
+        int arrSum = 0;
+        for(int i=0; i<=nums.length; i++) {
+            wholeSum += i;
+        }
+        for(int i=0; i<nums.length; i++) {
+            arrSum += nums[i];
+        }
+        return wholeSum-arrSum;
+    }
+}
